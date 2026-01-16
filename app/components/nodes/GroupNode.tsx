@@ -1,12 +1,12 @@
 import { memo } from 'react';
-import { NodeProps } from '@xyflow/react';
+import { NodeProps, Node } from '@xyflow/react';
 
 export type GroupNodeData = {
   label: string;
   color?: string;
 };
 
-const GroupNode = memo(({ data, selected }: NodeProps<GroupNodeData>) => {
+const GroupNode = memo(({ data, selected }: NodeProps<Node<GroupNodeData>>) => {
   const color = data.color || 'blue';
 
   const getBorderColor = () => {

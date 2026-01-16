@@ -1,5 +1,5 @@
 import { memo } from 'react';
-import { Handle, Position, NodeProps } from '@xyflow/react';
+import { Handle, Position, NodeProps, Node } from '@xyflow/react';
 
 export type CustomNodeData = {
   label: string;
@@ -8,7 +8,7 @@ export type CustomNodeData = {
   status?: 'active' | 'inactive' | 'warning' | 'error' | 'success';
 };
 
-const CustomNode = memo(({ data, selected }: NodeProps<CustomNodeData>) => {
+const CustomNode = memo(({ data, selected }: NodeProps<Node<CustomNodeData>>) => {
   const nodeType = data.type || 'default';
   const status = data.status || 'inactive';
 
