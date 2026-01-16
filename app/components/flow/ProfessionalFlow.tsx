@@ -34,8 +34,8 @@ type NodeTemplate = {
 const ProfessionalFlow = () => {
   const reactFlowWrapper = useRef<HTMLDivElement>(null);
   const [nodes, setNodes, onNodesChange] = useNodesState<Node<BrandNodeData>>([]);
-  const [edges, setEdges, onEdgesChange] = useEdgesState([]);
-  const [reactFlowInstance, setReactFlowInstance] = useState<ReactFlowInstance | null>(null);
+  const [edges, setEdges, onEdgesChange] = useEdgesState<Edge>([]);
+  const [reactFlowInstance, setReactFlowInstance] = useState<ReactFlowInstance<Node<BrandNodeData>, Edge> | null>(null);
   const [selectedNodes, setSelectedNodes] = useState<string[]>([]);
   const nodeIdCounter = useRef(0);
 
@@ -220,7 +220,7 @@ const ProfessionalFlow = () => {
       <NodeLibrary onAddNode={onAddNode} />
 
       <div ref={reactFlowWrapper} className="w-full h-full">
-        <ReactFlow
+        <ReactFlow<Node<BrandNodeData>, Edge>
           nodes={nodes}
           edges={edges}
           onNodesChange={onNodesChange}
